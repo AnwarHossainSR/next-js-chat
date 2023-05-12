@@ -28,15 +28,15 @@ module.exports = {
       colors: {
         ...colors,
         brand: {
+          main: '#31C48D',
           accent: '#5AD769',
-          main: '#324BC3',
         },
         text: {
-          primary: '#FFFFFF',
-          secondary: '#0C0F19',
+          primary: '#0C0F19',
+          secondary: '#FFFFFF',
         },
         background: {
-          primary: '#0C0F19',
+          primary: '#FFFFFF',
         },
       },
       fontFamily: {
