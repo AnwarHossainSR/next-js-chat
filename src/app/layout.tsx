@@ -2,6 +2,7 @@ import '@/styles/globals.css';
 
 import { Poppins } from 'next/font/google';
 
+import MainLayout from '@/layouts/MainLayout/MainLayout';
 import type { ChildrenProps } from '@/types';
 
 export const metadata = {
@@ -23,7 +24,9 @@ export default async function RootLayout({ children }: ChildrenProps) {
       <body
         className={`${poppins.className} h-full flex flex-col justify-between`}
       >
-        <section className="flex-1">{children}</section>
+        <MainLayout>
+          <section className="flex-1">{children}</section>
+        </MainLayout>
       </body>
     </html>
   );
