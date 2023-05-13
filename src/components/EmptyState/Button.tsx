@@ -11,6 +11,7 @@ interface ButtonProps {
   small?: boolean;
   icon?: IconType;
   isLoading?: boolean;
+  width?: number;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -20,6 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   small,
   icon: Icon,
   isLoading,
+  width,
 }) => {
   return (
     <button
@@ -33,10 +35,10 @@ const Button: React.FC<ButtonProps> = ({
         rounded-lg
         hover:opacity-80
         transition
-        w-full
-        bg
+        bg-brand-main
         text-white
         px-8
+        ${width ? `w-${width}` : 'w-full'}
         ${small ? 'text-sm' : 'text-md'}
         ${small ? 'py-1' : 'py-3'}
         ${small ? 'font-light' : 'font-semibold'}

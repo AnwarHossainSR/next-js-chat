@@ -12,6 +12,7 @@
     "cssnano",
     "nextauth",
     "tailwindcss",
-    "Chatify"
+    "Chatify",
+    "zustand"
   ]
 }
