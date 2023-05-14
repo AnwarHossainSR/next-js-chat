@@ -2,20 +2,16 @@
 
 'use client';
 
-import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import type { FieldValues, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-hot-toast';
 
 import Button from '@/components/EmptyState/Button';
 import Input from '@/components/inputs/Input';
 
 export default function SignIn() {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -32,21 +28,10 @@ export default function SignIn() {
   const onSubmit: SubmitHandler<FieldValues> = data => {
     setIsLoading(true);
 
-    signIn('credentials', {
-      ...data,
-      redirect: false,
-    }).then(callback => {
-      setIsLoading(false);
+    // interact with firebase
 
-      if (callback?.ok) {
-        toast.success('Logged in');
-        router.push('/chats');
-      }
-
-      if (callback?.error) {
-        toast.error(callback.error);
-      }
-    });
+    // eslint-disable-next-line no-console
+    console.log(data);
   };
 
   return (

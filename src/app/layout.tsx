@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google';
 
 import { ClientOnly } from '@/components/ClientOnly/ClientOnly';
 import MainLayout from '@/layouts/MainLayout/MainLayout';
+import { AuthProvider } from '@/providers/AuthContext';
 import ToasterProvider from '@/providers/ToasterProvider';
 import type { ChildrenProps } from '@/types';
 
@@ -31,7 +32,9 @@ export default async function RootLayout({ children }: ChildrenProps) {
           <ToasterProvider />
         </ClientOnly>
         <MainLayout>
-          <section className="flex-1">{children}</section>
+          <AuthProvider>
+            <section className="flex-1">{children}</section>
+          </AuthProvider>
         </MainLayout>
       </body>
     </html>

@@ -2,20 +2,16 @@
 
 'use client';
 
-import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import type { FieldValues, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-hot-toast';
 
 import Button from '@/components/EmptyState/Button';
 import Input from '@/components/inputs/Input';
 
 export default function SignUp() {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -32,15 +28,8 @@ export default function SignUp() {
 
   const onSubmit: SubmitHandler<FieldValues> = async data => {
     setIsLoading(true);
-    try {
-      const response = await axios.post('/api/auth/register', data);
-      toast.success(response.data.message);
-      setIsLoading(false);
-      return router.push('/chats');
-    } catch (error: any) {
-      toast.error(error.response?.data.message || error.message);
-      return setIsLoading(false);
-    }
+    // eslint-disable-next-line no-console
+    console.log(data);
   };
 
   return (
