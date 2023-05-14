@@ -1,6 +1,5 @@
 'use client';
 
-import { SessionProvider } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
 export function ClientOnly({ children }: { children: React.ReactNode }) {
@@ -12,5 +11,5 @@ export function ClientOnly({ children }: { children: React.ReactNode }) {
 
   if (!hasMounted) return null;
 
-  return <SessionProvider>{children}</SessionProvider>;
+  return <div>{children}</div>;
 }

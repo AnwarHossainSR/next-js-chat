@@ -12,6 +12,7 @@ interface ButtonProps {
   icon?: IconType;
   isLoading?: boolean;
   width?: number;
+  type?: 'button' | 'submit';
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -22,10 +23,12 @@ const Button: React.FC<ButtonProps> = ({
   icon: Icon,
   isLoading,
   width,
+  type = 'button',
 }) => {
   return (
     <button
-      type="button"
+      // eslint-disable-next-line react/button-has-type
+      type={type}
       disabled={disabled}
       onClick={onClick}
       className={`

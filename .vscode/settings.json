@@ -8,11 +8,13 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [
+    "Chatify",
     "commitlint",
     "cssnano",
     "nextauth",
+    "Signin",
+    "signup",
     "tailwindcss",
-    "Chatify",
     "zustand"
   ]
 }

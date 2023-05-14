@@ -1,47 +1,99 @@
+/* eslint-disable simple-import-sort/imports */
+
 'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import type { FieldValues, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import Button from '@/components/EmptyState/Button';
+import Input from '@/components/inputs/Input';
 
 export default function SignUp() {
-  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FieldValues>({
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+  });
+
+  const onSubmit: SubmitHandler<FieldValues> = async data => {
+    setIsLoading(true);
+    // eslint-disable-next-line no-console
+    console.log(data);
+  };
+
   return (
     <section className="p-8 flex flex-col h-full justify-end items-center">
-      <Image src="/logo.png" alt="Hero" width={210} height={210} />
-      <h2 className="text-1xl font-semibold text-center mt-20">
-        Sign Up fo free
+      <Image src="/logo.png" alt="Hero" width={100} height={100} />
+      <h2 className="text-1xl font-semibold text-center mt-7">
+        Sign-up for free
       </h2>
       <div
         className="
-        flex
-        flex-col
-        justify-start
-        items-start
-        mt-17
+        mt-7
+        w-[300px]
       "
       >
-        <input
-          type="text"
-          placeholder="Enter your phone number"
-          className="border-1 border-[#FFEEEE] p-2 mt-4 w-[300px] bg-[#F0F0F0] rounded-3xl px-4   "
-        />
-      </div>
-      <div className="mt-8">
-        <Button
-          label="Sign Up"
-          onClick={() => router.push('verification')}
-          width={300}
-        />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div
+            className="
+            flex
+            flex-col
+            justify-start
+            items-start
+            mt-7
+            gap-5
+            w-[300px]
+          "
+          >
+            <Input
+              id="name"
+              placeholder="name"
+              disabled={isLoading}
+              register={register}
+              errors={errors}
+              required
+            />
+            <Input
+              id="email"
+              placeholder="email address"
+              disabled={isLoading}
+              register={register}
+              errors={errors}
+              required
+            />
+            <Input
+              id="password"
+              placeholder="password"
+              type="password"
+              disabled={isLoading}
+              register={register}
+              errors={errors}
+              required
+            />
+          </div>
+
+          <div className="mt-8">
+            <Button label="SIgn Up" type="submit" />
+          </div>
+        </form>
       </div>
 
       <div className="mt-8">
-        Already have an account?
+        Don't have an account?
         <Link href="/sign-in" className="text-blue-500">
           {' '}
-          Sign In
+          Sign in
         </Link>
       </div>
     </section>
