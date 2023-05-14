@@ -7,11 +7,15 @@ import Link from 'next/link';
 import { useState } from 'react';
 import type { FieldValues, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 
 import Button from '@/components/EmptyState/Button';
 import Input from '@/components/inputs/Input';
+import { useAuth } from '@/context/AuthContext';
+import { firebaseErrors } from '@/utils/firebaseErrors';
 
 export default function SignIn() {
+  const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -25,11 +29,20 @@ export default function SignIn() {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = data => {
+  const onSubmit: SubmitHandler<FieldValues> = async data => {
     setIsLoading(true);
+    try {
+      const { email, password } = data;
 
-    // eslint-disable-next-line no-console
-    console.log(data);
+      const res = await login(email, password);
+      // eslint-disable-next-line no-console
+      console.log(res);
+    } catch (error: any) {
+      setIsLoading(false);
+      const errormessage = firebaseErrors(error.code);
+
+      toast.error(errormessage);
+    }
   };
 
   return (
