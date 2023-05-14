@@ -38,7 +38,7 @@ const Input: React.FC<InputProps> = ({
           peer
           w-full
           p-4
-          font-light 
+          font-light
           border-1
           outline-none
           transition
@@ -47,7 +47,7 @@ const Input: React.FC<InputProps> = ({
           ${errors[id] ? 'border-rose-500' : 'border-neutral-300'}
           ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}
           text-neutral-800
-          bg-[#F0F0F0] 
+          bg-[#F0F0F0]
           rounded-3xl
         `}
       />
