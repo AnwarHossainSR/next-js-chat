@@ -28,8 +28,6 @@ export default function SignIn() {
   const onSubmit: SubmitHandler<FieldValues> = data => {
     setIsLoading(true);
 
-    // interact with firebase
-
     // eslint-disable-next-line no-console
     console.log(data);
   };
