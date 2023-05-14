@@ -3,8 +3,8 @@ import '@/styles/globals.css';
 import { Poppins } from 'next/font/google';
 
 import { ClientOnly } from '@/components/ClientOnly/ClientOnly';
+import { AuthProvider } from '@/context';
 import MainLayout from '@/layouts/MainLayout/MainLayout';
-import { AuthProvider } from '@/providers/AuthContext';
 import ToasterProvider from '@/providers/ToasterProvider';
 import type { ChildrenProps } from '@/types';
 
