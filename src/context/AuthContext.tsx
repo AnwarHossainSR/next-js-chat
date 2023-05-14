@@ -6,6 +6,13 @@
 //     GoogleAuthProvider,
 //     signInWithPopup,
 // } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth';
 import React, { useContext, useEffect, useState } from 'react';
 
 import { auth } from '@/utils/firebase';
@@ -25,7 +32,7 @@ export function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
   const [loading, setLoading] = useState(true);
 
   function signup(email: string, password: string): Promise<any> {
-    return auth.createUserWithEmailAndPassword(email, password);
+    return createUserWithEmailAndPassword(auth, email, password);
   }
 
   //   function googleSignin(): Promise<any> {
@@ -39,15 +46,15 @@ export function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
   //   }
 
   function login(email: string, password: string): Promise<any> {
-    return auth.signInWithEmailAndPassword(email, password);
+    return signInWithEmailAndPassword(auth, email, password);
   }
 
   function logout(): Promise<any> {
-    return auth.signOut();
+    return signOut(auth);
   }
 
   function resetPassword(email: string): Promise<any> {
-    return auth.sendPasswordResetEmail(email);
+    return sendPasswordResetEmail(auth, email);
   }
 
   function updateEmail(email: string): Promise<any> {
@@ -59,7 +66,7 @@ export function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
   }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
       setCurrentUser(user);
       setLoading(false);
     });
@@ -71,8 +78,6 @@ export function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
     currentUser,
     login,
     signup,
-    // googleSignin,
-    // githubSignin,
     logout,
     resetPassword,
     updateEmail,
