@@ -2,7 +2,9 @@ import '@/styles/globals.css';
 
 import { Poppins } from 'next/font/google';
 
+import { ClientOnly } from '@/components/ClientOnly/ClientOnly';
 import MainLayout from '@/layouts/MainLayout/MainLayout';
+import ToasterProvider from '@/providers/ToasterProvider';
 import type { ChildrenProps } from '@/types';
 
 export const metadata = {
@@ -23,7 +25,11 @@ export default async function RootLayout({ children }: ChildrenProps) {
     <html lang="en">
       <body
         className={`${poppins.className} h-full flex flex-col justify-between`}
+        suppressHydrationWarning
       >
+        <ClientOnly>
+          <ToasterProvider />
+        </ClientOnly>
         <MainLayout>
           <section className="flex-1">{children}</section>
         </MainLayout>
