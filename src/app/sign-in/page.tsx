@@ -4,7 +4,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import type { FieldValues, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
@@ -15,7 +16,8 @@ import { useAuth } from '@/context/AuthContext';
 import { firebaseErrors } from '@/utils/firebaseErrors';
 
 export default function SignIn() {
-  const { login } = useAuth();
+  const router = useRouter();
+  const { login, currentUser } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -35,15 +37,20 @@ export default function SignIn() {
       const { email, password } = data;
 
       const res = await login(email, password);
-      // eslint-disable-next-line no-console
-      console.log(res);
+      if (res) {
+        toast.success('Login successfully');
+        router.push('/chats');
+      }
     } catch (error: any) {
       setIsLoading(false);
       const errormessage = firebaseErrors(error.code);
-
       toast.error(errormessage);
     }
   };
+
+  useEffect(() => {
+    if (currentUser || currentUser != null) router.push('/chats');
+  }, [currentUser]);
 
   return (
     <section className="p-8 flex flex-col h-full justify-end items-center">

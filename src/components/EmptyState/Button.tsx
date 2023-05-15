@@ -35,12 +35,12 @@ const Button: React.FC<ButtonProps> = ({
         relative
         disabled:opacity-70
         disabled:cursor-not-allowed
-        rounded-lg
         hover:opacity-80
         transition
         bg-brand-main
         text-white
         px-8
+        rounded-3xl
         ${width ? `w-${width}` : 'w-full'}
         ${small ? 'text-sm' : 'text-md'}
         ${small ? 'py-1' : 'py-3'}

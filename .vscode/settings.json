@@ -12,6 +12,7 @@
     "commitlint",
     "cssnano",
     "nextauth",
+    "noninteractive",
     "Signin",
     "signup",
     "tailwindcss",
