@@ -1,8 +1,10 @@
 'use client';
 
 import type { FC } from 'react';
+import { useState } from 'react';
 import { BiDotsVerticalRounded, BiSearchAlt2 } from 'react-icons/bi';
 
+import Dropdown from '../Dropdown';
 import Tab from './Tab';
 
 interface HeaderProps {
@@ -11,6 +13,7 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ isActive, setIsActive }) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="flex flex-col p-4">
       <div className="flex justify-between gap-2">
@@ -18,7 +21,8 @@ const Header: FC<HeaderProps> = ({ isActive, setIsActive }) => {
           <h1 className="flex-1 font-extrabold text-lg">Chatify</h1>
           <BiSearchAlt2 className="flex-2" size={30} />
         </div>
-        <BiDotsVerticalRounded size={30} />
+        <BiDotsVerticalRounded size={30} onClick={() => setIsOpen(!isOpen)} />
+        {isOpen && <Dropdown />}
       </div>
       <div className="mt-3 flex justify-around items-center">
         <Tab

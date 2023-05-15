@@ -42,17 +42,18 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     'react/require-default-props': 'off',
     'import/order': [
-      'warn',
-      {
-        'newlines-between': 'always',
-        pathGroups: [
-          {
-            group: 'external',
-            pattern: '@/**',
-            position: 'after',
-          },
-        ],
-      },
+      'off',
+      // 'warn',
+      // {
+      //   'newlines-between': 'always',
+      //   pathGroups: [
+      //     {
+      //       group: 'external',
+      //       pattern: '@/**',
+      //       position: 'after',
+      //     },
+      //   ],
+      // },
     ],
     'import/prefer-default-export': 'off',
     'jsx-a11y/anchor-is-valid': [

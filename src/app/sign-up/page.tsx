@@ -4,14 +4,22 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { FieldValues, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
 import Button from '@/components/EmptyState/Button';
 import Input from '@/components/inputs/Input';
+import { useAuth } from '@/context/AuthContext';
+import { database } from '@/utils/firebase';
+import { firebaseErrors } from '@/utils/firebaseErrors';
+import { ref, update } from 'firebase/database';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-hot-toast';
 
 export default function SignUp() {
+  const router = useRouter();
+  const { signup, currentUser } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -28,9 +36,33 @@ export default function SignUp() {
 
   const onSubmit: SubmitHandler<FieldValues> = async data => {
     setIsLoading(true);
-    // eslint-disable-next-line no-console
-    console.log(data);
+    try {
+      const res = await signup(data.email, data.password);
+
+      if (res) {
+        toast.success('Account created successfully');
+        const userId = res.user?.uid;
+        const usersRef = ref(database, `users/${userId}`);
+
+        await update(usersRef, {
+          id: userId,
+          name: data.name,
+          email: data.email,
+          createdAt: new Date().toISOString(),
+        });
+
+        router.push('/chats');
+      }
+    } catch (error: any) {
+      setIsLoading(false);
+      const errormessage = await firebaseErrors(error.code);
+      toast.error(errormessage);
+    }
   };
+
+  useEffect(() => {
+    if (currentUser || currentUser != null) router.push('/chats');
+  }, [currentUser]);
 
   return (
     <section className="p-8 flex flex-col h-full justify-end items-center">

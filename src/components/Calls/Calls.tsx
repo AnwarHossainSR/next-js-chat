@@ -1,5 +1,11 @@
+import FreshScreen from '../FreshScreen/FreshScreen';
+
 const CallsScreen = () => {
-  return <div>CallsScreen</div>;
+  return (
+    <div>
+      <FreshScreen title="call" label="Start Calling" />
+    </div>
+  );
 };
 
 export default CallsScreen;
