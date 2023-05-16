@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
 
-import { Poppins } from 'next/font/google';
+import { Poppins, Roboto } from 'next/font/google';
 
 import { ClientOnly } from '@/components/ClientOnly/ClientOnly';
 import { AuthProvider } from '@/context';
@@ -21,11 +21,17 @@ const poppins = Poppins({
   display: 'swap',
 });
 
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  display: 'swap',
+});
+
 export default async function RootLayout({ children }: ChildrenProps) {
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} h-full flex flex-col justify-between`}
+        className={`${poppins.className} ${roboto.className} h-full flex flex-col justify-between`}
         suppressHydrationWarning
       >
         <ClientOnly>

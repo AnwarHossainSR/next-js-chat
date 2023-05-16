@@ -13,7 +13,7 @@ const Chats = () => {
   return (
     <div>
       <Header isActive={isActive} setIsActive={setIsActive} />
-      <div className="mt-5 p-2">
+      <div className=" p-2">
         {isActive === 'Chats' && <ChatScreen />}
         {isActive === 'Groups' && <GroupsScreen />}
         {isActive === 'Status' && <StatusScreen />}

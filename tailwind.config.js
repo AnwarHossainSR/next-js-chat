@@ -43,6 +43,7 @@ module.exports = {
         sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
         mono: [...defaultTheme.fontFamily.mono],
         poppins: ['var(--font-poppins)'],
+        roboto: ['var(--font-roboto)'],
       },
     },
   },
