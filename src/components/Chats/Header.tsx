@@ -15,7 +15,7 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ isActive, setIsActive }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="flex flex-col p-4">
+    <div className="flex flex-col p-4 fixed w-full bg-background-primary">
       <div className="flex justify-between gap-2">
         <div className="flex justify-between w-full">
           <h1 className="flex-1 font-extrabold text-lg">Chatify</h1>
