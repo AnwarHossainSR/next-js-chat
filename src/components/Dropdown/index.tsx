@@ -10,7 +10,7 @@ const Dropdown: FC = () => {
   const router = useRouter();
   return (
     <div className="relative">
-      <div className="absolute right-0 mt-10 w-48 bg-white rounded-lg z-10 shadow-2xl transition-opacity duration-300">
+      <div className="absolute right-0 mt-10 w-48 bg-white rounded-lg z-10 transition-opacity duration-300 shadow-boxShadow-3xl">
         <ul className="py-2">
           <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
             My Profile

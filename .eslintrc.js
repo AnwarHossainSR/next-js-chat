@@ -77,6 +77,7 @@ module.exports = {
     'simple-import-sort/imports': 'error',
     'sort-keys': 'off',
     'no-unused-vars': 'error',
+    'jsx-a11y/click-events-have-key-events': 'off',
     'react/function-component-definition': [
       2,
       {

@@ -11,13 +11,15 @@ import StatusScreen from '@/components/Status/Status';
 const Chats = () => {
   const [isActive, setIsActive] = useState('Chats');
   return (
-    <div>
+    <div className="relative">
       <Header isActive={isActive} setIsActive={setIsActive} />
-      <div className=" p-2">
-        {isActive === 'Chats' && <ChatScreen />}
-        {isActive === 'Groups' && <GroupsScreen />}
-        {isActive === 'Status' && <StatusScreen />}
-        {isActive === 'Calls' && <CallsScreen />}
+      <div className="p-2">
+        <div className="mt-[86px]">
+          {isActive === 'Chats' && <ChatScreen />}
+          {isActive === 'Groups' && <GroupsScreen />}
+          {isActive === 'Status' && <StatusScreen />}
+          {isActive === 'Calls' && <CallsScreen />}
+        </div>
       </div>
     </div>
   );
