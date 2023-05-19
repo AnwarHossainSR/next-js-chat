@@ -1,7 +1,9 @@
 import '@/styles/globals.css';
 
 import { Poppins, Roboto } from 'next/font/google';
+import { Suspense } from 'react';
 
+import Loading from '@/app/loading';
 import { ClientOnly } from '@/components/ClientOnly/ClientOnly';
 import { AuthProvider } from '@/context';
 import MainLayout from '@/layouts/MainLayout/MainLayout';
@@ -37,11 +39,13 @@ export default async function RootLayout({ children }: ChildrenProps) {
         <ClientOnly>
           <ToasterProvider />
         </ClientOnly>
-        <MainLayout>
-          <AuthProvider>
-            <section className="flex-1">{children}</section>
-          </AuthProvider>
-        </MainLayout>
+        <Suspense fallback={<Loading />}>
+          <MainLayout>
+            <AuthProvider>
+              <section className="flex-1">{children}</section>
+            </AuthProvider>
+          </MainLayout>
+        </Suspense>
       </body>
     </html>
   );
