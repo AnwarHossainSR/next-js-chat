@@ -21,6 +21,7 @@ const MessageHeader = () => {
         width={60}
         height={60}
         alt="chat-1"
+        priority
         className="border-white rounded-full"
       />
       <h1 className="text-xl font-bold">Chat 1</h1>
