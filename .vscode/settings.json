@@ -11,6 +11,7 @@
     "Chatify",
     "commitlint",
     "cssnano",
+    "fullfilled",
     "Hasan",
     "nextauth",
     "noninteractive",
@@ -18,6 +19,7 @@
     "Signin",
     "signup",
     "tailwindcss",
+    "unsub",
     "zustand"
   ]
 }
