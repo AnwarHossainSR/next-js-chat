@@ -20,6 +20,7 @@
     "signup",
     "tailwindcss",
     "unsub",
+    "uuidv",
     "zustand"
   ]
 }

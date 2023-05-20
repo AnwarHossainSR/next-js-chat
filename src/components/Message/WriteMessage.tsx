@@ -3,12 +3,14 @@
 import 'emoji-mart/css/emoji-mart.css';
 
 import { Picker } from 'emoji-mart';
+import { useTheme } from 'next-themes';
 import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { BsEmojiSmileFill, BsImage } from 'react-icons/bs';
 import { IoSend } from 'react-icons/io5';
 
 const WriteMessage: FC = () => {
+  const { theme } = useTheme();
   const emojiRef = useRef<HTMLDivElement>(null);
   const [showEmojis, setShowEmojis] = useState(false);
   const [input, setInput] = useState('');
@@ -38,7 +40,7 @@ const WriteMessage: FC = () => {
         {showEmojis && (
           <Picker
             onSelect={addEmoji}
-            theme="dark"
+            theme={theme === 'light' ? 'light' : 'dark'}
             style={{
               position: 'absolute',
               top: '-13rem',

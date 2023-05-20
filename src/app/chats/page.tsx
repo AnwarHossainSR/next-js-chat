@@ -11,7 +11,7 @@ import StatusScreen from '@/components/Status/Status';
 const Chats = () => {
   const [isActive, setIsActive] = useState('Chats');
   return (
-    <div className="relative">
+    <div className="relative dark:bg-background-slate">
       <Header isActive={isActive} setIsActive={setIsActive} />
       <div className="p-2">
         <div className="mt-[86px]">
