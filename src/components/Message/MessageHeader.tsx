@@ -10,7 +10,7 @@ import { MdVideoCall } from 'react-icons/md';
 const MessageHeader = () => {
   const router = useRouter();
   return (
-    <div className=" w-full p-2 flex justify-between items-center fixed border-b border-zinc-500 z-10 bg-white">
+    <div className=" w-full p-2 flex justify-between items-center fixed border-b border-zinc-500 z-10 bg-white dark:bg-background-slate dark:text-gray-300">
       <AiOutlineArrowLeft
         size={30}
         className="text-2xl text-brand-main"
@@ -27,15 +27,15 @@ const MessageHeader = () => {
       <h1 className="text-xl font-bold">Chat 1</h1>
       <IoMdCall
         size={30}
-        className="text-2xl text-brand-main p-1 rounded-full bg-[#d1fae5]"
+        className="text-2xl text-brand-main p-1 rounded-full"
       />
       <MdVideoCall
         size={30}
-        className="text-2xl text-brand-main p-1 rounded-full bg-[#d1fae5]"
+        className="text-2xl text-brand-main p-1 rounded-full "
       />
       <BsThreeDotsVertical
         size={30}
-        className="text-2xl text-brand-main p-1 rounded-full bg-[#d1fae5]"
+        className="text-2xl text-brand-main p-1 rounded-full "
       />
     </div>
   );

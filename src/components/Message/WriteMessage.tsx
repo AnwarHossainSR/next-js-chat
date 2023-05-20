@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import { BsEmojiSmileFill } from 'react-icons/bs';
+import { BsEmojiSmileFill, BsImage } from 'react-icons/bs';
 
 const WriteMessage = () => {
   return (
@@ -10,7 +9,10 @@ const WriteMessage = () => {
         className="outline-none border-none w-full bg-transparent"
         placeholder="Type a message"
       />
-      <Image src="/upload.png" width={16} height={27} alt="upload" />
+      <label htmlFor="file-upload">
+        <BsImage color="#94a3b8" />
+      </label>
+      <input type="file" id="file-upload" className="hidden" />
     </div>
   );
 };
