@@ -17,6 +17,7 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx}',
     './src/layouts/**/*.{js,ts,jsx,tsx}',
   ],
+  darkMode: ['class'],
   theme: {
     extend: {
       screens: {
@@ -37,6 +38,7 @@ module.exports = {
         },
         background: {
           primary: '#FFFFFF',
+          slate: '#1f2937',
         },
       },
       fontFamily: {
@@ -44,10 +46,6 @@ module.exports = {
         mono: [...defaultTheme.fontFamily.mono],
         poppins: ['var(--font-poppins)'],
         roboto: ['var(--font-roboto)'],
-      },
-      boxShadow: {
-        '3xl':
-          'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;0px -10px',
       },
       animation: {
         bounce200: 'bounce 1s infinite 200ms',

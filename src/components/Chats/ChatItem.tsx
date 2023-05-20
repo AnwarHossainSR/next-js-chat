@@ -9,7 +9,7 @@ const ChatItem = () => {
   const router = useRouter();
   return (
     <div
-      className="w-full height-[85px]"
+      className="w-full height-[85px] dark:text-gray-300"
       onClick={() => router.push('chats/chatId')}
       role="button"
       tabIndex={0}

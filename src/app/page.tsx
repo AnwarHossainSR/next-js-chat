@@ -8,7 +8,7 @@ import Button from '@/components/EmptyState/Button';
 export default function Home() {
   const router = useRouter();
   return (
-    <section className="p-8 flex flex-col h-full justify-end items-center">
+    <section className="p-8 flex flex-col h-full justify-end items-center dark:text-white">
       <Image src="/logo.png" alt="Hero" width={210} height={210} priority />
       <h1 className="text-2xl font-bold text-center mt-20">
         Welcome to Chatify
