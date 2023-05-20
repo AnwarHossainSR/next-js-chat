@@ -5,6 +5,9 @@ import {
   differenceInMonths,
   differenceInSeconds,
   differenceInYears,
+  format,
+  isToday,
+  isYesterday,
 } from 'date-fns';
 
 export const getDateCompare = (after: Date) => {
@@ -26,4 +29,22 @@ export const getDateCompare = (after: Date) => {
     return `${differenceInMonths(currDate, after)} month(s) ago`;
   }
   return `${differenceInYears(currDate, after)} year(s) ago`;
+};
+
+// create a method where condition 1: if the date is today, return the time only with AM/PM
+// condition 2: if the date is yesterday, return yesterday at time with AM/PM
+// condition 3: if the date is this year, return the date only
+// condition 4: if the date is not this year, return the date and year
+// condition 5: if the date is more than 1 year, return the date and year
+// condition 7: method will get only timestamp
+
+export const getDate = (timestamp: number) => {
+  const date = new Date(timestamp);
+  if (isToday(date)) {
+    return format(date, 'h:mm a');
+  }
+  if (isYesterday(date)) {
+    return `Yesterday at ${format(date, 'h:mm a')}`;
+  }
+  return format(date, 'MMM d');
 };

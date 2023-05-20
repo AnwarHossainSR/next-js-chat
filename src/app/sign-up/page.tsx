@@ -48,7 +48,10 @@ export default function SignUp() {
           id: userId,
           name: data.name,
           email: data.email,
-          createdAt: new Date().toISOString(),
+          isAdmin: false,
+          isOnline: true,
+          isActive: true,
+          createdAt: Date.now(),
         });
 
         router.push('/chats');
