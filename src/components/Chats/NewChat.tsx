@@ -2,20 +2,45 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import type { FC } from 'react';
+import { toast } from 'react-hot-toast';
 
-import { useAuth } from '@/context/AuthContext';
+import { createOrUpdateRecord } from '@/utils/operations';
 
-const NewChat = () => {
-  const { currentUser, loading } = useAuth();
+interface NewChatProps {
+  user: {
+    id: string;
+    name: string;
+    email: string;
+    isOnline: boolean;
+    photoURL?: string;
+  };
+  loading: boolean;
+  currentUserId: string;
+}
+
+const NewChat: FC<NewChatProps> = ({ user, loading, currentUserId }) => {
   const router = useRouter();
-  const circleClass = currentUser?.isOnline ? 'bg-green-500' : 'bg-gray-500';
+  const circleClass = user?.isOnline ? 'bg-green-500' : 'bg-gray-500';
 
   if (loading) return <div>Loading...</div>;
+
+  const handleNavigate = async () => {
+    const res = await createOrUpdateRecord('chats', {
+      participants: [user?.id, currentUserId],
+      timestamp: Date.now(),
+    });
+    if (res) {
+      router.push(`/chats/${res}`);
+    } else {
+      toast.error('Something went wrong!');
+    }
+  };
 
   return (
     <div
       className="w-full height-[85px] dark:text-gray-300"
-      onClick={() => router.push('chats/chatId')}
+      onClick={handleNavigate}
       role="button"
       tabIndex={0}
     >
@@ -27,10 +52,11 @@ const NewChat = () => {
             height={85}
             alt="chat-1"
             priority
+            className="rounded-full bg-transparent"
           />
         </div>
         <div className="flex items-center justify-between flex-1">
-          <div className="font-bold">Mahedi Hasan</div>
+          <div className="font-bold">{user?.name}</div>
           <div className="flex items-center justify-center mr-4">
             <div className={`w-2 h-2 rounded-full ${circleClass}`} />
           </div>

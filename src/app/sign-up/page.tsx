@@ -68,7 +68,7 @@ export default function SignUp() {
   }, [currentUser]);
 
   return (
-    <section className="p-8 flex flex-col h-full justify-end items-center">
+    <section className="p-8 flex flex-col h-full justify-end items-center dark:bg-background-slate">
       <Image src="/logo.png" alt="Hero" width={100} height={100} />
       <h2 className="text-1xl font-semibold text-center mt-7">
         Sign-up for free
