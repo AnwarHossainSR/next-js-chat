@@ -27,9 +27,11 @@
   },
   "dependencies": {
     "@next/bundle-analyzer": "^13.4.1",
+    "@types/emoji-mart": "^3.0.9",
     "axios": "^1.4.0",
     "config": "^3.3.9",
     "date-fns": "^2.30.0",
+    "emoji-mart": "3.0.1",
     "firebase": "^9.22.0",
     "next": "^13.4.1",
     "next-sitemap": "^4.0.9",
