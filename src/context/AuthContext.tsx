@@ -13,9 +13,10 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
+import { onValue, ref } from 'firebase/database';
 import React, { useContext, useEffect, useState } from 'react';
 
-import { auth } from '@/utils/firebase';
+import { auth, database } from '@/utils/firebase';
 
 interface IAuthProviderProps {
   children: JSX.Element;
@@ -68,6 +69,16 @@ export function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       setCurrentUser(user);
+
+      if (user) {
+        // fetch user data from firebase realtime database
+        const userId = user.uid;
+        const usersRef = ref(database, `users/${userId}`);
+        onValue(usersRef, snapshot => {
+          const data = snapshot.val();
+          setCurrentUser(data);
+        });
+      }
       setLoading(false);
     });
 
@@ -82,6 +93,7 @@ export function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
     resetPassword,
     updateEmail,
     updatePassword,
+    loading,
   };
 
   return (

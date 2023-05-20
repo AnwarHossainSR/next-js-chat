@@ -53,7 +53,7 @@ export default function SignIn() {
   }, [currentUser]);
 
   return (
-    <section className="p-8 flex flex-col h-full justify-end items-center">
+    <section className="p-8 flex flex-col h-full justify-end items-center dark:text-white">
       <Image src="/logo.png" alt="Hero" width={100} height={100} />
       <h2 className="text-1xl font-semibold text-center mt-7">
         Sign in to your Account

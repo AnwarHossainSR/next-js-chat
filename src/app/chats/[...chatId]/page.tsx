@@ -10,70 +10,70 @@ const page = () => {
         <div className="mt-[7rem] px-4">
           <Message
             name="Mahedi Hasan"
-            timestamp="21435436"
+            timestamp={1684556154837}
             message="Hello, how are you?"
             bg="bg-[#F0F4F9]"
             own={false}
           />
           <Message
             name="Mahedi Hasan"
-            timestamp="21435436"
+            timestamp={1684556154837}
             message="Hello, how are you?"
             bg="bg-[#DDFFEC]"
             own
           />
           <Message
             name="Mahedi Hasan"
-            timestamp="21435436"
+            timestamp={1684556154837}
             message="Hello, how are you?"
             bg="bg-[#F0F4F9]"
             own={false}
           />
           <Message
             name="Mahedi Hasan"
-            timestamp="21435436"
+            timestamp={1684556154837}
             message="Hello, how are you?"
             bg="bg-[#DDFFEC]"
             own
           />
           <Message
             name="Mahedi Hasan"
-            timestamp="21435436"
+            timestamp={1684556154837}
             message="Hello, how are you?"
             bg="bg-[#F0F4F9]"
             own={false}
           />
           <Message
             name="Mahedi Hasan"
-            timestamp="21435436"
+            timestamp={1684556154837}
             message="Hello, how are you?"
             bg="bg-[#DDFFEC]"
             own
           />
           <Message
             name="Mahedi Hasan"
-            timestamp="21435436"
+            timestamp={1684556154837}
             message="Hello, how are you?"
             bg="bg-[#F0F4F9]"
             own={false}
           />
           <Message
             name="Mahedi Hasan"
-            timestamp="21435436"
+            timestamp={1684556154837}
             message="Hello, how are you?"
             bg="bg-[#DDFFEC]"
             own
           />
           <Message
             name="Mahedi Hasan"
-            timestamp="21435436"
+            timestamp={1684556154837}
             message="Hello, how are you?"
             bg="bg-[#F0F4F9]"
             own={false}
           />
           <Message
             name="Mahedi Hasan"
-            timestamp="21435436"
+            timestamp={1684556154837}
             message="Hello, how are you?"
             bg="bg-[#DDFFEC]"
             own

@@ -33,7 +33,7 @@ export default async function RootLayout({ children }: ChildrenProps) {
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} ${roboto.className} h-full flex flex-col justify-between`}
+        className={`${poppins.className} ${roboto.className} h-full flex flex-col justify-between dark:bg-background-slate dark:text-gray-300`}
         suppressHydrationWarning
       >
         <ClientOnly>

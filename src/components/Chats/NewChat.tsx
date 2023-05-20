@@ -3,10 +3,15 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { getDate } from '@/utils/date';
+import { useAuth } from '@/context/AuthContext';
 
-const ChatItem = () => {
+const NewChat = () => {
+  const { currentUser, loading } = useAuth();
   const router = useRouter();
+  const circleClass = currentUser?.isOnline ? 'bg-green-500' : 'bg-gray-500';
+
+  if (loading) return <div>Loading...</div>;
+
   return (
     <div
       className="w-full height-[85px] dark:text-gray-300"
@@ -25,12 +30,9 @@ const ChatItem = () => {
           />
         </div>
         <div className="flex items-center justify-between flex-1">
-          <div>
-            <div className="font-bold">Mahedi Hasan</div>
-            <div className="text-sm	font-light">Hello , my name is ma...</div>
-          </div>
-          <div className="ml-auto text-base font-light">
-            {getDate(1684556154837)}
+          <div className="font-bold">Mahedi Hasan</div>
+          <div className="flex items-center justify-center mr-4">
+            <div className={`w-2 h-2 rounded-full ${circleClass}`} />
           </div>
         </div>
       </div>
@@ -38,4 +40,4 @@ const ChatItem = () => {
   );
 };
 
-export default ChatItem;
+export default NewChat;

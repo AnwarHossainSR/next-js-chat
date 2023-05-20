@@ -1,8 +1,10 @@
 import type { FC } from 'react';
 
+import { getDate } from '@/utils/date';
+
 interface MessageProps {
   message?: string;
-  timestamp?: string;
+  timestamp: number;
   name?: string;
   bg?: string;
   own?: boolean;
@@ -17,7 +19,7 @@ const Message: FC<MessageProps> = ({ message, timestamp, name, bg, own }) => {
     >
       <div className="text-brand-main">{name}</div>
       <div>{message}</div>
-      <div className="float-right text-sm">{timestamp}</div>
+      <div className="float-right text-sm">{getDate(timestamp)}</div>
     </div>
   );
 };
