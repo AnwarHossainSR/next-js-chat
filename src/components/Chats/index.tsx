@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useAuth } from '@/context/AuthContext';
 import { useFirebaseRealtimeData } from '@/hooks/useFIrebaseData';
+import { getMyChats } from '@/utils/operations';
 
 import FreshScreen from '../FreshScreen/FreshScreen';
 import ChatItem from './ChatItem';
@@ -11,6 +12,22 @@ const ChatScreen = () => {
   const { currentUser, loading } = useAuth();
   const [chatType, setChatType] = useState(0);
   const users = useFirebaseRealtimeData('users');
+  const chatsRes = useFirebaseRealtimeData('chats');
+  const [chats, setChats] = useState([]);
+
+  const handleDataCalling = async () => {
+    const myChats = await getMyChats(
+      chatsRes,
+      currentUser?.id ?? currentUser.uid
+    );
+
+    setChats(myChats);
+  };
+
+  useEffect(() => {
+    handleDataCalling();
+  }, [currentUser]);
+
   return (
     <div className="p-1 overflow-x-auto">
       {chatType === 0 && (
@@ -23,23 +40,15 @@ const ChatScreen = () => {
         />
       )}
 
-      {chatType === 1 && (
-        <>
-          <ChatItem />
-          <ChatItem />
-          <ChatItem />
-          <ChatItem />
-          <ChatItem />
-          <ChatItem />
-          <ChatItem />
-          <ChatItem />
-        </>
-      )}
+      {chatType === 1 &&
+        chats.length > 0 &&
+        chats.map((chat: any) => <ChatItem key={chat.id} chat={chat} />)}
 
       {chatType === 2 && (
         <div>
           {users &&
-            users.map(
+            users?.length > 0 &&
+            users?.map(
               (user: any) =>
                 user.id !== currentUser?.id && (
                   <NewChat

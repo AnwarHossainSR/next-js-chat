@@ -5,12 +5,12 @@ import { useRouter } from 'next/navigation';
 
 import { getDate } from '@/utils/date';
 
-const ChatItem = () => {
+const ChatItem = ({ chat }: any) => {
   const router = useRouter();
   return (
     <div
       className="w-full height-[85px] dark:text-gray-300"
-      onClick={() => router.push('chats/chatId')}
+      onClick={() => router.push(`chats/${chat.id}`)}
       role="button"
       tabIndex={0}
     >

@@ -21,4 +21,9 @@ const createOrUpdateRecord = (
   return newId;
 };
 
-export { createOrUpdateRecord };
+const getMyChats = async (chats: any, userId: string) => {
+  if (!chats) return [];
+  return chats.filter((chat: any) => chat.participants.includes(userId));
+};
+
+export { createOrUpdateRecord, getMyChats };
