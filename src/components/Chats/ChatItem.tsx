@@ -26,11 +26,11 @@ const ChatItem = ({ chat }: any) => {
         </div>
         <div className="flex items-center justify-between flex-1">
           <div>
-            <div className="font-bold">Mahedi Hasan</div>
-            <div className="text-sm	font-light">Hello , my name is ma...</div>
+            <div className="font-bold">{chat?.name ?? ''}</div>
+            <div className="text-sm	font-light">{chat?.lastMessage ?? ''}</div>
           </div>
           <div className="ml-auto text-base font-light">
-            {getDate(1684556154837)}
+            {getDate(chat?.timestamp)}
           </div>
         </div>
       </div>

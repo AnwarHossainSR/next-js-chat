@@ -21,9 +21,24 @@ const createOrUpdateRecord = (
   return newId;
 };
 
-const getMyChats = async (chats: any, userId: string) => {
+const getMyChats = async (chats: any, userId: string, users: any) => {
   if (!chats) return [];
-  return chats.filter((chat: any) => chat.participants.includes(userId));
+  const mainChats = chats.filter((chat: any) =>
+    chat.participants.includes(userId)
+  );
+
+  // in mainChats array, added the user data of the other participant
+  const chatsWithUserData = mainChats.map((chat: any) => {
+    const otherParticipant = chat.participants.find(
+      (participant: string) => participant !== userId
+    );
+    const userData = users.find((user: any) => user.id === otherParticipant);
+    return { ...chat, userData };
+  });
+
+  console.log(chatsWithUserData);
+
+  return mainChats;
 };
 
 export { createOrUpdateRecord, getMyChats };

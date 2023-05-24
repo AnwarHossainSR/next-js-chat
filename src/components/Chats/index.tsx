@@ -18,15 +18,17 @@ const ChatScreen = () => {
   const handleDataCalling = async () => {
     const myChats = await getMyChats(
       chatsRes,
-      currentUser?.id ?? currentUser.uid
+      currentUser?.id ?? currentUser.uid,
+      users
     );
 
     setChats(myChats);
+    if (myChats.length > 0) setChatType(1);
   };
 
   useEffect(() => {
     handleDataCalling();
-  }, [currentUser]);
+  }, [currentUser, chats]);
 
   return (
     <div className="p-1 overflow-x-auto">
